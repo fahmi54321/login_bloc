@@ -1,29 +1,26 @@
 import 'dart:async';
 import 'validators.dart';
 
-// todo 7 (karna class Validators gak ada base class, maka extendnya ke Object )
 class Bloc extends Object with Validators{
 
-  //todo 1
   final _email = StreamController<String>();
   final _password = StreamController<String>();
 
-  //todo 2
   // retrive data from stream
-  Stream<String> get email => _email.stream.transform(validateEmail); //todo 8
-  Stream<String> get password => _password.stream.transform(validatePassword); // todo 9
+  Stream<String> get email => _email.stream.transform(validateEmail);
+  Stream<String> get password => _password.stream.transform(validatePassword);
 
-  //todo 3 (next validators.dart)
   // ada data to stream
   Function(String) get changeEmail => _email.sink.add;
   Function(String) get changePassword => _password.sink.add;
 
-  //todo 10 (finish)
   dispose(){
     _email.close();
     _password.close();
   }
 }
+
+final bloc = Bloc(); //todo 1 (next login_page)
 
 
 //todo contoh extended vs mixing

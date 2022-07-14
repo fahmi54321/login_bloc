@@ -2,7 +2,6 @@ import 'dart:async';
 
 class Validators{
 
-  //todo 4
   final validateEmail = StreamTransformer<String,String>.fromHandlers(
     handleData: (email,sink){
       if(email.contains('@')){
@@ -13,7 +12,6 @@ class Validators{
     }
   );
 
-  //todo 5 (next bloc.dart)
   final validatePassword = StreamTransformer<String,String>.fromHandlers(
       handleData: (password,sink){
         if(password.length > 3){
