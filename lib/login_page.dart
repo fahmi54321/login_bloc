@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
     });
   }
 
-  //todo 3
+  //todo 3 (finish)
   Widget submitButton() {
     return RaisedButton(
       onPressed: () {},
