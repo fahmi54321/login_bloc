@@ -20,8 +20,6 @@ class Bloc extends Object with Validators{
   }
 }
 
-final bloc = Bloc(); //todo 1 (next login_page)
-
 
 //todo contoh extended vs mixing
 //     1. extend biasanya digunakan untuk base/ parent class, mixin untuk child
