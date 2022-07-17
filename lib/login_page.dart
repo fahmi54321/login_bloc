@@ -61,12 +61,12 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget submitButton(Bloc bloc) {
-    //todo 3 (finish)
     return StreamBuilder(
         stream: bloc.submitValid,
-        builder: (context,AsyncSnapshot<bool> snapshot) {
+        builder: (context, AsyncSnapshot<bool> snapshot) {
           return RaisedButton(
-            onPressed:(snapshot.hasData == false) ? null : () {},
+            // todo 3 (finish)
+            onPressed: (snapshot.hasData == false) ? null : bloc.submit,
             child: Text('Login'),
             color: Colors.blue,
           );
