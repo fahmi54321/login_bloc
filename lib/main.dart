@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Provider( //todo 5 (next login_page)
+    return Provider(
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

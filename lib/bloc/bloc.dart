@@ -1,14 +1,20 @@
 import 'dart:async';
 import 'validators.dart';
+import 'package:rxdart/rxdart.dart';
 
 class Bloc extends Object with Validators{
 
-  final _email = StreamController<String>();
-  final _password = StreamController<String>();
+  //todo 2 (next login_page)
+  // tambah broadcast karena stream akan di listen multiple times
+  final _email = StreamController<String>.broadcast();
+  final _password = StreamController<String>.broadcast();
 
   // retrive data from stream
   Stream<String> get email => _email.stream.transform(validateEmail);
   Stream<String> get password => _password.stream.transform(validatePassword);
+
+  //todo 1
+  Stream<bool> get submitValid => CombineLatestStream.combine2(email, password, (e, p) => true);
 
   // ada data to stream
   Function(String) get changeEmail => _email.sink.add;

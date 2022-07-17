@@ -7,8 +7,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    //todo 6
     final bloc = Provider.of(context);
 
     return Scaffold(
@@ -19,10 +17,10 @@ class LoginPage extends StatelessWidget {
         margin: EdgeInsets.all(20),
         child: Column(
           children: [
-            emailField(bloc), //todo 7
-            passwordField(bloc), //todo 8 (finish)
+            emailField(bloc),
+            passwordField(bloc),
             SizedBox(height: 25),
-            submitButton(),
+            submitButton(bloc),
           ],
         ),
       ),
@@ -49,24 +47,29 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget passwordField(Bloc bloc) {
-
-    return StreamBuilder(stream: bloc.password,builder: (context,snapshot){
-      return TextField(
-        decoration: InputDecoration(
-          hintText: 'Password',
-          labelText: 'Password',
-          errorText: snapshot.error as String?
-        ),
-        onChanged: bloc.changePassword,
-      );
-    });
+    return StreamBuilder(
+        stream: bloc.password,
+        builder: (context, snapshot) {
+          return TextField(
+            decoration: InputDecoration(
+                hintText: 'Password',
+                labelText: 'Password',
+                errorText: snapshot.error as String?),
+            onChanged: bloc.changePassword,
+          );
+        });
   }
 
-  Widget submitButton() {
-    return RaisedButton(
-      onPressed: () {},
-      child: Text('Login'),
-      color: Colors.blue,
-    );
+  Widget submitButton(Bloc bloc) {
+    //todo 3 (finish)
+    return StreamBuilder(
+        stream: bloc.submitValid,
+        builder: (context,AsyncSnapshot<bool> snapshot) {
+          return RaisedButton(
+            onPressed:(snapshot.hasData == false) ? null : () {},
+            child: Text('Login'),
+            color: Colors.blue,
+          );
+        });
   }
 }
